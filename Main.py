@@ -5,7 +5,7 @@ class Phase_Check:
 
 
     def __init__(self):
-        self.debug = 0
+        self.debug = 1
         self.ask_for_dir = 0
         self.images_location = 'Cell Images'
 
@@ -54,9 +54,12 @@ class Phase_Check:
         '''
         Loops through images in specific folder
         '''
+        if self.debug:
+            print('Running debug version of code. If you are expecting results, change self.debug to 0.')
         if self.ask_for_dir:
             tkinter.Tk().withdraw() # hides blank tkinter window that pop up otherwise
             self.images_location  = tkinter.filedialog.askdirectory(initialdir="C:/", title="Select Save Directory")
+        print(f'Phase check on images located in {self.images_location}')
         for cell_image in os.scandir(self.images_location):
             self.main(cell_image.path)
         # TODO Add .csv output format for results.
