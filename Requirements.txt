@@ -1,0 +1,6 @@
+# Python 3.6
+numpy==1.19.1
+opencv-python==4.1.1.26
+keras==2.2.4
+tensorflow==1.13.1
+matplotlib==3.3.3
