@@ -1,57 +1,31 @@
-# Deep learning-based classification of the mouse estrous cycle stages, K. Sano and etal, 2020, Scientific Reports.
+# Fork of [Secreit](https://github.com/SanoKyohei/Secreit/) by [Sano Kyohei](https://github.com/SanoKyohei/)
 
-https://www.nature.com/articles/s41598-020-68611-0
+## Purpose
 
-# SECREIT
+This modified version of Secreit is set up in order to loop through a folder of images and output data at the end.
 
-Mouse Estrous Cycle Estimation
+## Todo
 
-## Prerequisites
+* excel or csv output
 
-- Python 3.6
-- numpy 1.19.1
-- opencv-python 4.1.1
-- keras (tensorflow backend)== 2.2.4 (NOT 2.3)
-- tensorflow 1.13.1
+## Requirements
 
-## Overview
+Located within Requirements.txt.
 
-![Overview](https://github.com/SanoKyohei/Secreit/blob/master/Example/Overview.png)
+Main requirements are shown below.
 
-## Model AUC (Performance)
+```python
+Python 3.6
+numpy 1.19.1
+opencv-python 4.1.1
+keras (tensorflow backend)== 2.2.4 (NOT 2.3)
+tensorflow 1.13.1
+```
 
-### SECREIT correctly classified competitive to two professionals
+## Contributors to this fork
 
-### diestrus stage (D): 0.982
+[Kaitlyn Roman](https://github.com/kroman4): ph
 
-### estrus stage (E): 0.979
+[Michael Ericson](https://github.com/Concrete18): Python Programmer
 
-### proestrus stage (P): 0.962
-
-## Weight parameter
-
-https://opac.ll.chiba-u.jp/da/curator/108041/weights.hdf5
-
-## Dataset
-
-### Example of file name
-
- "D_a_14_e1_Auto2_train.png"
-
- <br> ①　D: Estrous Stage. When the estrous stage is intermediate class, we described it using "_", such as "D_E".
-
- <br> ②　a_14_e1: image id
-
- <br> ③　Auto2: Name of Experiment. Auto2 and Auto3 was used for trainig. Auto1 was for validation and Auto4 is for test.
-
-### Dataset download
-
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/D_part1.zip  <br>
-
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/D_part2.zip <br>
-
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/D_part3.zip  <br>
-
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/E.zip <br>
-
-<br> https://opac.ll.chiba-u.jp/da/curator/108041/P.zip <br>
+[Sano Kyohei](https://github.com/SanoKyohei/): Created main repo along with currently used weights
