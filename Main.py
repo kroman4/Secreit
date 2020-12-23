@@ -4,15 +4,15 @@ import matplotlib as mpl
 import numpy as np
 import Secreit
 import tkinter.filedialog
+import csv
 import os
-import matplotlib.rcsetup as rcsetup
-print(rcsetup.all_backends)
 
 class Stage_Check:
 
 
-    def __init__(self, debug=0, use_graph=1, ask_for_dir=0, def_images_location=''):
+    def __init__(self, debug=0, open_in_excel=0, use_graph=1, ask_for_dir=0, def_images_location=''):
         self.debug = debug
+        self.open_in_excel = open_in_excel
         self.use_graph = use_graph
         self.ask_for_dir = ask_for_dir
         self.def_images_location = def_images_location
@@ -74,6 +74,22 @@ class Stage_Check:
         return data_set
 
 
+    def write_to_csv(self, data_set):
+        '''
+        writes results into CSV file.
+        '''
+        filename = "cell_stage_results.csv"
+        rows = [['Filename', '%D', '%E', '%P', 'Probable Stage']]
+        for data in data_set:
+            rows.append([data['Filename'], data['D']+'%', data['E']+'%', data['P']+'%', data['Probable Stage']])
+        print(f'Writing results to {filename}')
+        with open(filename, 'w') as csvfile:
+            writer = csv.writer(csvfile,  lineterminator = '\n')
+            writer.writerows(rows)
+        if self.open_in_excel:
+            os.startfile(filename)
+
+
     def image_loop(self):
         '''
         Loops through images in specific folder.
@@ -91,9 +107,9 @@ class Stage_Check:
         for entry in data_list:
             print(f"{entry['Filename']}\nD:{entry['D']}% E:{entry['E']}% P:{entry['P']}%")
             print(f"Probable Stage: {entry['Probable Stage']}")
-        # TODO Add .csv output format for results.
+        self.write_to_csv(data_list)
 
 
 if __name__ ==  "__main__":
-    App = Stage_Check(debug=0, use_graph=0, ask_for_dir=0, def_images_location='Cell Images')
+    App = Stage_Check(debug=0, open_in_excel=1, use_graph=0, ask_for_dir=0, def_images_location='Cell Images')
     App.image_loop()
