@@ -36,7 +36,7 @@ Located within Requirements.txt.
 Main requirements are shown below.
 
 ```python
-Python 3.6
+Python 3.6.8
 numpy 1.19.1
 opencv-python 4.1.1
 keras (tensorflow backend)== 2.2.4 (NOT 2.3)
