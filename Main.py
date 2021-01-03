@@ -6,6 +6,7 @@ import Secreit
 import tkinter.filedialog
 import csv
 import os
+import datetime as dt
 
 class Stage_Check:
 
@@ -78,7 +79,8 @@ class Stage_Check:
         '''
         writes results into CSV file.
         '''
-        filename = "cell_stage_results.csv"
+        date = dt.datetime.now().strftime('%Y-%m-%d_%H-%M')
+        filename = f"{date}_cell_stage_results.csv"
         rows = [['Filename', '%D', '%E', '%P', 'Probable Stage']]
         for data in data_set:
             rows.append([data['Filename'], data['D']+'%', data['E']+'%', data['P']+'%', data['Probable Stage']])
