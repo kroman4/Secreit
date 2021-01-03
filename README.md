@@ -36,7 +36,7 @@ Located within Requirements.txt.
 Main requirements are shown below.
 
 ```python
-Python 3.6
+Python 3.6.1
 numpy 1.19.1
 opencv-python 4.1.1
 keras (tensorflow backend)== 2.2.4 (NOT 2.3)
@@ -45,7 +45,7 @@ tensorflow 1.13.1
 
 ## Contributors to this fork
 
-[Kaitlyn Roman](https://github.com/kroman4): (enter your title here)
+[Kaitlyn Roman](https://github.com/kroman4): 
 
 [Michael Ericson](https://github.com/Concrete18): Python Programmer
 
