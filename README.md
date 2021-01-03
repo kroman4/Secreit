@@ -45,7 +45,7 @@ tensorflow 1.13.1
 
 ## Contributors to this fork
 
-[Kaitlyn Roman](https://github.com/kroman4): 
+[Kaitlyn Roman](https://github.com/kroman4): Graduate Student
 
 [Michael Ericson](https://github.com/Concrete18): Python Programmer
 
