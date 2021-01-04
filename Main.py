@@ -4,19 +4,23 @@ import matplotlib as mpl
 import numpy as np
 import Secreit
 import tkinter.filedialog
+import datetime as dt
+import json
+import time
 import csv
 import os
-import datetime as dt
 
 class Stage_Check:
 
 
-    def __init__(self, debug=0, open_in_excel=0, use_graph=1, ask_for_dir=0, def_images_location=''):
-        self.debug = debug
-        self.open_in_excel = open_in_excel
-        self.use_graph = use_graph
-        self.ask_for_dir = ask_for_dir
-        self.def_images_location = def_images_location
+    def __init__(self):
+        with open('config.json') as json_file:
+            self.data = json.load(json_file)
+        self.debug = self.data['settings']['debug']
+        self.open_in_excel = self.data['settings']['open_in_excel']
+        self.use_graph = self.data['settings']['use_graph']
+        self.ask_for_dir = self.data['settings']['ask_for_dir']
+        self.images_location = self.data['settings']['images_location']
 
 
     def main(self, cell_image):
@@ -98,10 +102,11 @@ class Stage_Check:
         '''
         if self.ask_for_dir:
             tkinter.Tk().withdraw() # hides blank tkinter window that pop up otherwise
-            self.def_images_location  = tkinter.filedialog.askdirectory(initialdir="C:/", title="Select Save Directory")
-        print(f'Stage check on images located in {self.def_images_location}')
+            self.images_location = tkinter.filedialog.askdirectory(initialdir="C:/", title="Select Save Directory")
+        print(f'Stage check on images located in {self.images_location}')
         data_list = []
-        for cell_image in os.scandir(self.def_images_location):
+        overall_start= time.perf_counter() # stop time for checking elaspsed runtime
+        for cell_image in os.scandir(self.images_location):
             data_list.append(self.main(cell_image))
             if self.debug:
                 break
@@ -110,8 +115,11 @@ class Stage_Check:
             print(f"{entry['Filename']}\nD:{entry['D']}% E:{entry['E']}% P:{entry['P']}%")
             print(f"Probable Stage: {entry['Probable Stage']}")
         self.write_to_csv(data_list)
+        overall_finish = time.perf_counter() # stop time for checking elaspsed runtime
+        elapsed_time = round(overall_finish-overall_start, 2)
+        print(f'Elapsed Runtime: {elapsed_time} seconds')
 
 
 if __name__ ==  "__main__":
-    App = Stage_Check(debug=0, open_in_excel=1, use_graph=0, ask_for_dir=0, def_images_location='Cell Images')
+    App = Stage_Check()
     App.image_loop()
