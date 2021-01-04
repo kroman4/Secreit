@@ -56,25 +56,19 @@ class Stage_Check:
             imgd = image.array_to_img(Secreit.Cam(np.array(img), "D", model))
             imge = image.array_to_img(Secreit.Cam(np.array(img), "E", model))
             imgp = image.array_to_img(Secreit.Cam(np.array(img), "P", model))
-
             mpl.rcParams['figure.figsize'] = [20, 4]
-
             plt.subplot(1,4,1)
             plt.imshow(img)
             plt.title(f'D:{d_percent}% E:{e_percent}% + P:{p_percent}%', fontsize = 25)
-
             plt.subplot(1,4,2)
             plt.imshow(imgd)
             plt.title("D place", fontsize = 25)
-
             plt.subplot(1,4,3)
             plt.imshow(imge)
             plt.title("E place", fontsize = 25)
-
             plt.subplot(1,4,4)
             plt.imshow(imgp)
             plt.title("P place", fontsize = 25)
-
             plt.show
         return data_set
 
@@ -113,7 +107,7 @@ class Stage_Check:
         print('')
         for entry in data_list:
             print(f"{entry['Filename']}\nD:{entry['D']}% E:{entry['E']}% P:{entry['P']}%")
-            print(f"Probable Stage: {entry['Probable Stage']}")
+            print(f"Probable Stage: {entry['Probable Stage']}\n")
         self.write_to_csv(data_list)
         overall_finish = time.perf_counter() # stop time for checking elaspsed runtime
         elapsed_time = round(overall_finish-overall_start, 2)
