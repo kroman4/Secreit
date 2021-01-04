@@ -1,0 +1,10 @@
+{
+    "settings":
+        {
+            "ask_for_dir": 1,
+            "open_in_excel": 1,
+            "use_graph": 0,
+            "images_location": "Cell Images",
+            "debug": 0
+        }
+}
